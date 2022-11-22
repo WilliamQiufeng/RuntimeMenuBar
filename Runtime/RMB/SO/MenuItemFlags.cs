@@ -6,4 +6,10 @@ namespace RMB.SO
         Vertical,
         Side
     }
+
+    public enum MenuItemType
+    {
+        Root,
+        Child
+    }
 }

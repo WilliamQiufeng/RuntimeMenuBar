@@ -6,6 +6,6 @@ namespace RMB.SO
     [CreateAssetMenu(menuName = "RMB/Menu Bar")]
     public class MenuBarSO : ScriptableObject
     {
-        public List<RootMenuItemSO> rootMenuItems;
+        public List<MenuItemSO> rootMenuItems;
     }
 }
