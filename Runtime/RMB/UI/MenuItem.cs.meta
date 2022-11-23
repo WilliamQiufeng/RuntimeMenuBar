@@ -1,3 +1,16 @@
 fileFormatVersion: 2
 guid: 5b2bf4100a094abba86b5ad66d31bf28
-timeCreated: 1669128153
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - menuItemSO: {instanceID: 0}
+  - itemName: {instanceID: 0}
+  - container: {instanceID: 0}
+  - rootMenuItemPrefab: {fileID: 6825533576904889626, guid: c269f80ab40e34907add175277784619, type: 3}
+  - menuSubItemPrefab: {fileID: 524967782248347043, guid: 981110395e53c410eaa8b9195d610dda, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
