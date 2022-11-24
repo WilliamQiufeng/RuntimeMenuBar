@@ -13,6 +13,16 @@ namespace RMB.Util
             foreach (Transform t in transform) Object.Destroy(t.gameObject);
         }
 
+        public static List<GameObject> GetChildren(this Transform transform)
+        {
+            return (from Transform obj in transform select obj.gameObject).ToList();
+        }
+
+        public static List<T> GetChildrenComponent<T>(this Transform transform)
+        {
+            return (from Transform obj in transform select obj.gameObject.GetComponent<T>()).ToList();
+        }
+
         public static IEnumerable<T> GetUniqueFlags<T>(this T flags) where T : Enum
         {
             ulong flag = 1;
@@ -23,6 +33,11 @@ namespace RMB.Util
 
                 if (flag == bits && flags.HasFlag(value)) yield return value;
             }
+        }
+
+        public static void SetEnabled(this Transform transform, bool enabled)
+        {
+            transform.GetComponent<Renderer>().enabled = enabled;
         }
     }
 }

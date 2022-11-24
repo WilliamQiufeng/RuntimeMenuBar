@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel;
-using RMB.Util;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +11,7 @@ namespace RMB.SO
         public MenuItemElementsArrangement elementsArrangement;
         public MenuItemType menuItemType;
         public List<MenuItemSO> elements;
-        public KeyBind keyBind;
+        public string shortcutEvent;
         public UnityEvent onClickEvent;
     }
 }
