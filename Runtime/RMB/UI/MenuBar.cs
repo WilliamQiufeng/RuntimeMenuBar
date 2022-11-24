@@ -85,7 +85,6 @@ namespace RMB.UI
             {
                 var popped = _path.Pop();
                 popped.ContainerEnabled = false;
-                Debug.Log($"Hide {popped.itemName.text}");
             }
 
             IsMenuOpen = false; // Set state

@@ -21,7 +21,7 @@ namespace RMB.UI
         public GameObject container;
         public GameObject rootMenuItemPrefab;
         public GameObject menuSubItemPrefab;
-        public UnityEvent additionalOnClick;
+        public UnityEvent<MenuItem> additionalOnClick;
         [NonSerialized] internal readonly List<MenuItem> SubItems = new();
         private Event _shortcutEvent;
         internal MenuBar MenuBar;
@@ -69,8 +69,8 @@ namespace RMB.UI
             }
 
             // Invoke OnClick events
-            additionalOnClick?.Invoke();
-            if (menuItemSO != null) menuItemSO.onClickEvent?.Invoke();
+            additionalOnClick?.Invoke(this);
+            if (menuItemSO != null) menuItemSO.onClickEvent?.Invoke(this);
             // Hide the menu if the menu item specifies a close when clicked
             if (closeOnClick) MenuBar.HideAll();
             // From this point the logic is dependent on unchanged value of ContainerEnabled, so skip if the call
@@ -125,7 +125,6 @@ namespace RMB.UI
                 shortcutText.text = _shortcutEvent == null ? "" : _shortcutEvent.ToKeybindString();
             foreach (var subItem in SubItems)
             {
-                Debug.Log($"Update Info: {subItem.itemName.text}");
                 // Recurse on its children
                 subItem.UpdateInfo();
             }
