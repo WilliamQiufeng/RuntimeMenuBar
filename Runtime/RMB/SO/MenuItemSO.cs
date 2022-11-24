@@ -8,7 +8,6 @@ namespace RMB.SO
     public class MenuItemSO : ScriptableObject
     {
         public string menuName;
-        public MenuItemElementsArrangement elementsArrangement;
         public MenuItemType menuItemType;
         public List<MenuItemSO> elements;
         public string shortcutEvent;

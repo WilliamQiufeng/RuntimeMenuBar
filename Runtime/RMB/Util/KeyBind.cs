@@ -4,7 +4,10 @@ namespace RMB.Util
 {
     public static class KeyBind
     {
-        private static string S(bool b, string s) => b ? s : string.Empty;
+        private static string S(bool b, string s)
+        {
+            return b ? s : string.Empty;
+        }
 
         public static string ToKeybindString(this Event kbEvent)
         {
