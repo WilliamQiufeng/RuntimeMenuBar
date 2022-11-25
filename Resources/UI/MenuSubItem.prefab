@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputBinding: 
-  closeOnClick: 0
+  closeOnClick: 1
   menuItemSO: {fileID: 0}
   itemName: {fileID: 524967782946334578}
   shortcutText: {fileID: 524967783402902957}

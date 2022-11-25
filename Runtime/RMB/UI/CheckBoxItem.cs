@@ -1,6 +1,7 @@
 using System;
 using RMB.Util;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace RMB.UI
@@ -10,6 +11,7 @@ namespace RMB.UI
         public Image checkBoxImage;
         public bool state;
         public MenuItem menuItem;
+        public UnityEvent<CheckBoxItem, bool> onClickEvent;
 
         private void Start()
         {
@@ -21,6 +23,7 @@ namespace RMB.UI
         {
             state = !state;
             checkBoxImage.gameObject.SetActive(state);
+            onClickEvent.Invoke(this, state);
         }
     }
 }
