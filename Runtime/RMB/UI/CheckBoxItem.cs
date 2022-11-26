@@ -21,9 +21,14 @@ namespace RMB.UI
 
         private void OnClick(MenuItem item)
         {
-            state = !state;
-            checkBoxImage.gameObject.SetActive(state);
+            SetStateWithoutNotify(!state);
             onClickEvent.Invoke(this, state);
+        }
+
+        public void SetStateWithoutNotify(bool newState)
+        {
+            state = newState;
+            checkBoxImage.gameObject.SetActive(state);
         }
     }
 }
