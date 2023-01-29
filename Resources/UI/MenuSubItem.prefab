@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputBinding: 
   closeOnClick: 1
+  registerEvent: 1
   menuItemSO: {fileID: 0}
   itemName: {fileID: 524967782946334578}
   shortcutText: {fileID: 524967783402902957}
@@ -99,7 +100,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 3bed8964db1cb446baca7baf742e2565, type: 3}
-  m_Type: 0
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

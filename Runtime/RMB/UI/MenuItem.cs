@@ -14,6 +14,7 @@ namespace RMB.UI
     {
         public string inputBinding; // https://docs.unity3d.com/ScriptReference/Event.KeyboardEvent.html
         public bool closeOnClick;
+        public bool registerEvent = true;
         public MenuItemSO menuItemSO;
         public TMP_Text itemName;
         public TMP_Text shortcutText;
@@ -144,7 +145,7 @@ namespace RMB.UI
         internal void RegisterShortcutEvents()
         {
             // Register shortcut events to the dictionary in menubar.
-            if (_shortcutEvent != null) MenuBar.Shortcuts.Add(_shortcutEvent, this);
+            if (registerEvent && _shortcutEvent != null) MenuBar.Shortcuts.Add(_shortcutEvent, this);
             foreach (var subItem in SubItems) subItem.RegisterShortcutEvents();
         }
     }
