@@ -41,7 +41,6 @@ namespace RMB.UI
         public void OnPointerEnter(PointerEventData eventData)
         {
             MenuBar.FocusCount++;
-            Debug.Log($"Enter item: {MenuBar.FocusCount}");
             // Skip when menu is not open
             if (!MenuBar.IsMenuOpen) return;
             // If any of its children is ray-casted, skip and leave this event to the ultimate child to process.
@@ -57,13 +56,11 @@ namespace RMB.UI
         public void OnPointerExit(PointerEventData eventData)
         {
             MenuBar.FocusCount--;
-            Debug.Log($"Exit item: {MenuBar.FocusCount}");
         }
 
 
         public void OnClick(bool fromGUI = false)
         {
-            Debug.Log("OnClick");
             if (fromGUI)
             {
                 ContainerEnabled = !ContainerEnabled; // Toggle container

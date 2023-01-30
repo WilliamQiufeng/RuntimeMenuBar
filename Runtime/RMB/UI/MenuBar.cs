@@ -48,13 +48,11 @@ namespace RMB.UI
         public void OnPointerEnter(PointerEventData eventData)
         {
             FocusCount++;
-            Debug.Log($"Enter bar: {FocusCount}");
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             FocusCount--;
-            Debug.Log($"Exit bar: {FocusCount}");
         }
 
         public void GotoItem(MenuItem item)
