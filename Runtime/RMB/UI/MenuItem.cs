@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 
 namespace RMB.UI
 {
-    public class MenuItem : MonoBehaviour, IPointerEnterHandler
+    public class MenuItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public string inputBinding; // https://docs.unity3d.com/ScriptReference/Event.KeyboardEvent.html
         public bool closeOnClick;
@@ -30,15 +30,18 @@ namespace RMB.UI
 
         public bool ContainerEnabled
         {
-            get => container.activeSelf;
-            set => container.SetActive(value);
+            get => HasSubItems && container.activeSelf;
+            set => container.SetActive(HasSubItems && value);
         }
 
         private bool IsRootMenuItem => ParentMenuItem == null;
+        private bool HasSubItems => SubItems.Count > 0;
 
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            MenuBar.FocusCount++;
+            Debug.Log($"Enter item: {MenuBar.FocusCount}");
             // Skip when menu is not open
             if (!MenuBar.IsMenuOpen) return;
             // If any of its children is ray-casted, skip and leave this event to the ultimate child to process.
@@ -51,9 +54,16 @@ namespace RMB.UI
             ContainerEnabled = true;
         }
 
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            MenuBar.FocusCount--;
+            Debug.Log($"Exit item: {MenuBar.FocusCount}");
+        }
+
 
         public void OnClick(bool fromGUI = false)
         {
+            Debug.Log("OnClick");
             if (fromGUI)
             {
                 ContainerEnabled = !ContainerEnabled; // Toggle container
@@ -86,8 +96,6 @@ namespace RMB.UI
 
         public void UpdateInfo()
         {
-            // Close the container
-            ContainerEnabled = false;
             // Clear all sub-items
             SubItems.Clear();
             if (menuItemSO == null)
@@ -129,6 +137,9 @@ namespace RMB.UI
                 // Recurse on its children
                 subItem.UpdateInfo();
             }
+
+            // Close the container
+            ContainerEnabled = false;
         }
 
         internal void UpdateSubItemsParent()

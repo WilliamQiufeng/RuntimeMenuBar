@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RMB.SO;
 using RMB.Util;
@@ -14,8 +15,15 @@ namespace RMB.UI
         private readonly Stack<MenuItem> _path = new();
         private readonly List<MenuItem> _rootMenuItems = new();
         internal readonly Dictionary<Event, MenuItem> Shortcuts = new();
-        private bool _isFocused;
+
+        private int _focusCount;
         internal bool IsMenuOpen;
+
+        public int FocusCount
+        {
+            get => _focusCount;
+            set => _focusCount = Math.Max(value, 0);
+        }
 
         private void Start()
         {
@@ -25,7 +33,7 @@ namespace RMB.UI
         private void Update()
         {
             // Hide the menu if the user clicks outside the menu
-            if (IsMenuOpen && Input.GetMouseButtonDown(0) && !_isFocused) HideAll();
+            if (IsMenuOpen && Input.GetMouseButtonDown(0) && FocusCount == 0) HideAll();
         }
 
         private void OnGUI()
@@ -39,12 +47,14 @@ namespace RMB.UI
         // Handle focused
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _isFocused = true;
+            FocusCount++;
+            Debug.Log($"Enter bar: {FocusCount}");
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            _isFocused = false;
+            FocusCount--;
+            Debug.Log($"Exit bar: {FocusCount}");
         }
 
         public void GotoItem(MenuItem item)
